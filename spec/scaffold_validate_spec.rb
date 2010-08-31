@@ -22,6 +22,28 @@ context ScaffolderValidate do
 
   end
 
+  context "testing a sequence for insert overlaps using sequence_errors" do
+
+    before(:all) do
+      # User integers for mocks because they can be sorted
+      @a = 1; @b = 2
+      @sequence = stub(:inserts => [@a,@b])
+    end
+
+    it "should return an empty array when sequence has no errors" do
+      ScaffolderValidate.stubs(:inserts_overlap?).with(@a,@b).returns(false)
+      ScaffolderValidate.stubs(:inserts_overlap?).with(@b,@a).returns(false)
+      ScaffolderValidate.sequence_errors(@sequence).empty?.should be_true
+    end
+
+    it "should return inserts when sequence inserts overlap" do
+      ScaffolderValidate.stubs(:inserts_overlap?).with(@a,@b).returns(true)
+      ScaffolderValidate.stubs(:inserts_overlap?).with(@b,@a).returns(true)
+      ScaffolderValidate.sequence_errors(@sequence).should == [[@a,@b]].sort
+    end
+
+  end
+
   context "calling the errors method" do
     before(:all) do
       @valid   = stub(:valid? => true)
