@@ -44,10 +44,13 @@ context ScaffolderValidate do
 
   end
 
-  context "calling the errors method" do
-    before(:all) do
-      @valid   = stub(:valid? => true)
-      @invalid = stub(:valid? => false)
+  context "validating entries in a scaffold using the errors method" do
+
+    before(:each) do
+      @valid        = stub(:entry_type => :sequence)
+      @invalid      = @valid.clone
+      ScaffolderValidate.stubs(:sequence_errors).with(@valid).returns([])
+      ScaffolderValidate.stubs(:sequence_errors).with(@invalid).returns([nil])
     end
 
     it "should return an empty array when scaffold is valid" do
@@ -57,6 +60,17 @@ context ScaffolderValidate do
     it "should return invalid entries when scaffold is invalid" do
       ScaffolderValidate.new([@invalid,@valid]).errors.should == [@invalid]
     end
+
+    it "should return invalid entries when scaffold is invalid" do
+      ScaffolderValidate.new([@invalid,@valid]).errors.should == [@invalid]
+    end
+
+    it "should ignore entries which are not sequences" do
+      @not_sequence = stub(:entry_type => :other)
+      ScaffolderValidate.new([@valid,@not_sequence]).errors.empty?.should be_true
+      ScaffolderValidate.new([@invalid,@not_sequence]).errors.should == [@invalid]
+    end
+
   end
 
 end
