@@ -12,7 +12,7 @@ require 'spec/autorun'
 require 'mocha'
 require 'steak'
 
-require 'scaffolder_validate'
+require 'scaffold_validate'
 
 Spec::Runner.configure do |config|
 

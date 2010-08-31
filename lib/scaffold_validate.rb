@@ -1,4 +1,4 @@
-class ScaffolderValidate
+class ScaffoldValidate
 
   def initialize(scaffold)
     @scaffold = scaffold
@@ -6,7 +6,7 @@ class ScaffolderValidate
 
   def errors
     sequences = @scaffold.select{|i| i.entry_type == :sequence}
-    sequences.reject{|i| ScaffolderValidate.sequence_errors(i).empty? }
+    sequences.reject{|i| self.class.sequence_errors(i).empty? }
   end
 
   def self.inserts_overlap?(a,b)
