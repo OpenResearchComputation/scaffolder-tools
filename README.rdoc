@@ -1,12 +1,14 @@
 == Synopsis
 
-A command line tool for processing genome scaffolds defined by the genome
-scaffolder API.
+A modular command-line interface for interacting with genome scaffolds defined
+in the {scaffolder format}[http://next.gs/man/scaffolder-format/].
 
 == Feature List
 
-* Output scaffold to fasta format.
-* Test inserts do not overlap in the scaffold.
+  * Unified command-line interface for interacting with genome scaffolds.
+  * Modular framework for creating scaffolder command-line plugins.
+  * Detect installed plugins and automatically make them available at the
+    command-line.
 
 == Installing
 
@@ -19,13 +21,23 @@ Scaffolder tools is installed on the command line using:
 
   $ gem install scaffolder-tools
 
+== Installing Tools
+
+Modular plugins are also installed using RubyGems:
+
+  $ gem install PLUGIN
+
 == Documentation
 
 Command line usage can be found by running the following:
 
   $ scaffolder help
 
-A unix man page is available for each scaffolder command by typing:
+A list of available tools can be found by running the following:
+
+  $ scaffolder list
+
+A unix man page is available for each tool by typing:
 
   $ scaffolder help COMMAND
 
