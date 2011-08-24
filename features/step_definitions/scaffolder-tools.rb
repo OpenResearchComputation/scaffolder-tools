@@ -6,3 +6,7 @@ end
 Then /^the stdout yaml should contain exactly:$/ do |string|
   YAML.load(string).should == YAML.load(all_stdout)
 end
+
+Given /^I have installed gem "([^"]*)"$/ do |arg1|
+    pending # express the regexp above with the code you wish you had
+end
