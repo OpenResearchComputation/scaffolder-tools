@@ -24,7 +24,7 @@ class Scaffolder::Tool::Help < Scaffolder::Tool
   private
 
   def raise_for_unknown(command)
-    msg = "Unknown command '#{command}'.\nSee 'scaffolder help'."
+    msg = "Unknown command: \"#{command}\"."
     raise ArgumentError.new(msg)
   end
 
@@ -35,10 +35,9 @@ class Scaffolder::Tool::Help < Scaffolder::Tool
 
   def help
     string = <<-MSG.gsub(/^ {6}/, '')
-      usage: scaffolder [--version] COMMAND scaffold-file sequence-file
-      [options]
+      usage: scaffolder [--version] COMMAND
 
-      Commands:
+      Available commands:
     MSG
     [:help,:sequence,:validate].each do |name|
       string << "  "

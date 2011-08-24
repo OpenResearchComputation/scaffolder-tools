@@ -12,10 +12,9 @@ describe Scaffolder::Tool::Help do
   end
 
   USAGE = <<-MSG.gsub(/^ {6}/, '')
-      usage: scaffolder [--version] COMMAND scaffold-file sequence-file
-      [options]
+      usage: scaffolder [--version] COMMAND
 
-      Commands:
+      Available commands:
     MSG
 
   describe "execution with" do
@@ -34,7 +33,7 @@ describe Scaffolder::Tool::Help do
 
       it "should raise an error" do
         lambda{ subject.execute }.should(raise_error(ArgumentError,
-          "Unknown command 'anything'.\nSee 'scaffolder help'."))
+          "Unknown command: \"anything\"."))
       end
 
     end
