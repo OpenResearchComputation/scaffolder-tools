@@ -3,8 +3,9 @@ Feature: Using an installed scaffolder command
   A user can install a scaffolder command
   to use its fuctionality at the at the command-line
 
+  Background: I have installed gem "scaffolder-fake"
+
   Scenario: Running scaffolder without any arguments with an installed command
-    Given I have installed gem "scaffolder-fake"
     When I call "scaffolder" with arguments ""
     Then the exit status should be 0
     And the stdout should contain:
