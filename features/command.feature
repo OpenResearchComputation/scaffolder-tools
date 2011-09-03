@@ -3,7 +3,8 @@ Feature: Using an installed scaffolder command
   A user can install a scaffolder command
   to use its fuctionality at the at the command-line
 
-  Background: I have installed gem "scaffolder-fake"
+  Background:
+    Given I have installed the gem "scaffolder-fake"
 
   Scenario: Running scaffolder without any arguments with an installed command
     Given a file named ".scaffolder.conf" with:
