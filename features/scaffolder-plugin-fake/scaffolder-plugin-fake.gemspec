@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name        = "scaffolder-fake"
+  s.name        = "scaffolder-plugin-fake"
   s.version     = "0.0.0"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Michael Barton"]
@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = ">= 1.8"
 
-  # lol - required for validation
-  s.rubyforge_project         = "scaffolder-fake"
+  # required for validation
+  s.rubyforge_project         = "scaffolder-plugin-fake"
 
   s.require_path = 'lib'
 end

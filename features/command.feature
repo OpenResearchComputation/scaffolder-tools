@@ -4,12 +4,12 @@ Feature: Using an installed scaffolder command
   to use its fuctionality at the at the command-line
 
   Background:
-    Given I have installed the gem "scaffolder-fake"
+    Given I have installed the gem "scaffolder-plugin-fake"
 
   Scenario: Running scaffolder without any arguments with an installed command
     Given a file named ".scaffolder.conf" with:
       """
-      gem "scaffolder-fake"
+      gem "scaffolder-plugin-fake"
       """
     When I call "scaffolder" with arguments ""
     Then the exit status should be 0
